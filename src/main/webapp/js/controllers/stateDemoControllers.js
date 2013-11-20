@@ -1,7 +1,8 @@
-var stateDemoControllers = angular.module('stateDemoControllers',[]);
+/*global angular*/
+var stateDemoControllers = angular.module('stateDemoControllers', []);
 
-stateDemoControllers.controller('Step1Ctrl', ['$scope', 'SharedState', 
-    function($scope, SharedState){
-        
+stateDemoControllers.controller('Step1Ctrl', ['$scope', 'SharedState',
+    function ($scope, SharedState) {
+
     }
 ]);

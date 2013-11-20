@@ -1,3 +1,4 @@
+/*global angular*/
 var stateDemoApp = angular.module('stateDemoApp', [
 	'ngRoute',
 	'stateDemoControllers',
