@@ -1,18 +1,18 @@
 var stateDemoApp = angular.module('stateDemoApp', [
 	'ngRoute',
 	'stateDemoControllers',
-	'sharedStateService'
+	'sharedStateServices'
 ]);
 
 stateDemoApp.config(['$routeProvider', 
     function ($routeProvider) {
 		$routeProvider.
 			when('/step1', {
-				templateUrl: 'partials/step1.html',
+				templateUrl: 'partials/Step1.html',
 				controller: 'Step1Ctrl'
 			}).
 			otherwise({
-				redirectTo: '/'
+				redirectTo: '/step1'
 			});
 	}
 ]);
