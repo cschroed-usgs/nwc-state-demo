@@ -1,1 +1,8 @@
-<div>This is the first step.</div>
+<div ng-controller="workflowA">
+    <h2 ng-bind="name"></h2>
+    <div ng-include="{{
+        <nav>
+            <a ng-href="{{previousStep.url}}" ng-bind="previousStep.name"></a>
+            <a ng-href="{{nextStep.url}}" ng-bind="nextStep.name"></a>
+        </nav>
+</div>

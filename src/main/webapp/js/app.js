@@ -12,6 +12,10 @@ stateDemoApp.config(['$routeProvider',
 				templateUrl: 'partials/Step1.html',
 				controller: 'Step1Ctrl'
 			}).
+                        when('/step2', {
+				templateUrl: 'partials/Step2.html',
+				controller: 'Step2Ctrl'
+			}).
 			otherwise({
 				redirectTo: '/step1'
 			});
