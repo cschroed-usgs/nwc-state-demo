@@ -4,7 +4,10 @@ var sharedStateServices = angular.module('stateDemoApp.sharedStateServices', [])
 sharedStateServices.factory('SharedState', [
     function(){
         return function(){
-            return {};
+            return {
+                color: 'blue',
+                number: 42
+            };
         };
     }
 ]);
