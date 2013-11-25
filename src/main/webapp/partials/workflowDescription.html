@@ -1,0 +1,10 @@
+<h2 ng-bind="name"></h2>
+<div>
+    <em ng-bind="description"></em>
+</div>
+<div ng-bind="currentStepTitle"></div>
+<div ui-view></div>
+<nav>
+    <a ui-sref="workflowA.{{previousStep}}" ng-click="goToPreviousStep">Previous</a>
+    <a ui-sref="workflowA.{{nextStep}}" ng-click="goToNextStep">Next</a>
+</nav>
