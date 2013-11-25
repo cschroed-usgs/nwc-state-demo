@@ -1,5 +1,5 @@
 /*global angular*/
-var sharedStateServices = angular.module('sharedStateServices', []);
+var sharedStateServices = angular.module('stateDemoApp.sharedStateServices', []);
 
 sharedStateServices.factory('SharedState', [
     function(){
