@@ -11,21 +11,20 @@ stateDemoApp.config(['$stateProvider', '$urlRouterProvider',
 
         $stateProvider.state('workflowA', {
                     url: '/workflowA',
-//                            templateUrl: 'partials/workflowA/description.html',
-                    template: '<h2>WorkflowA</h2>'/*,
-                     controller: 'WorkflowA'*/
+                            templateUrl: 'partials/workflowA/description.html',
+                     controller: 'WorkflowA'
                 })
                 .state('workflowA.step1', {
                     url: '/step1',
-//                            templateUrl: 'partials/workflowA/Step1.html',
-                    template: '<h3>step1</h3>'/*,
-                     controller: 'ColorSelectionStep'*/
+                            templateUrl: 'partials/workflowA/Step1.html',
+                    template: '<h3>step1</h3>',
+                    controller: 'ColorSelectionStep'
                 })
                 .state('workflowA.step2', {
                     url: '/step2',
-//                            templateUrl: 'partials/workflowA/Step2.html',
-                    template: '<h3>step2</h3>'/*,
-                     controller: 'NumberSelectionStep'*/
+                            templateUrl: 'partials/workflowA/Step2.html',
+                    template: '<h3>step2</h3>',
+                     controller: 'NumberSelectionStep'
                 });
     }
 ]);

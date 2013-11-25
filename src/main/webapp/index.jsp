@@ -14,6 +14,6 @@
     </head>
     <body>
         <h1>Shared State Demo App</h1>
-        <div ng-view></div>
+        <div ui-view></div>
     </body>
 </html>
