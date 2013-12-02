@@ -34,7 +34,7 @@ stateDemoApp.config(['$stateProvider', '$urlRouterProvider',
                 .state('workflow.workflowA.Final', {
                     url: '/final',
                     templateUrl: 'partials/workflowA/FinalA.html',
-                    controller: 'FinalSelectionStep'
+                    controller: 'FinalStep'
                 });
     }
 ]);

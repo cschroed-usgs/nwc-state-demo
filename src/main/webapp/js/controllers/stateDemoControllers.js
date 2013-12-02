@@ -9,6 +9,9 @@
      * @returns controller function to be used in a call to <module>.controller()
      */
     var WorkflowController = function(config, customControllerFunction){
+        if(!config || !config.name || !config.description){
+            throw new Error("Mandatory Step variables not Defined.");
+        }
         return function($scope){
             $scope.name = config.name;
             $scope.description = config.description;
@@ -35,7 +38,10 @@ stateDemoControllers.controller('WorkflowA', ['$scope',
  */
 
 var StepController = function(config, customControllerFunction){
-  return function($scope){
+    if(!config || !config.name || !config.description){
+        throw new Error("Mandatory Step variables not Defined.");
+    }
+    return function($scope){
       $scope.name = config.name;
       $scope.description = config.description;
       customControllerFunction.apply(arguments);
@@ -44,7 +50,7 @@ var StepController = function(config, customControllerFunction){
 
 
 
-stateDemoControllers.controller('ColorSelectionStep', ['$scope', 
+stateDemoControllers.controller('ColorSelectionStep', ['$scope', 'SharedState',
     StepController(
         {
             name: 'My name is: color selection',
@@ -55,7 +61,7 @@ stateDemoControllers.controller('ColorSelectionStep', ['$scope',
         }
     )
 ]);
-stateDemoControllers.controller('NumberSelectionStep', ['$scope', 
+stateDemoControllers.controller('NumberSelectionStep', ['$scope', 'SharedState',
     StepController(
         {
             name: 'My name is: number selection',
@@ -66,5 +72,17 @@ stateDemoControllers.controller('NumberSelectionStep', ['$scope',
         }
     )
 ]);
+stateDemoControllers.controller('FinalStep', ['$scope', 'SharedState',
+    StepController(
+        {
+            name: 'Final Step',
+            description: "You're all done!"
+        },
+        function ($scope) {
+            console.dir($scope);
+        }
+    )
+]);
+
 
 }());
