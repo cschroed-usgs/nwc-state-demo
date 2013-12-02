@@ -7,6 +7,7 @@
         <title></title>
         <script type="text/javascript" src="webjars/angularjs/1.2.1/angular.js"></script>
         <script type="text/javascript" src="webjars/angular-ui-router/0.2.0/angular-ui-router.js"></script>
+        <script type="text/javascript" src="webjars/sugar/1.3.8/sugar.js"></script>
         <script type="text/javascript" src="js/services/sharedStateServices.js"></script>
         <script type="text/javascript" src="js/controllers/stateDemoControllers.js"></script>
         <script type="text/javascript" src="app.js"></script>
