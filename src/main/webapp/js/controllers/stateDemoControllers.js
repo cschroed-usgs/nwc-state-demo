@@ -47,22 +47,22 @@ var StepController = function(config, customControllerFunction){
 stateDemoControllers.controller('ColorSelectionStep', ['$scope', 
     StepController(
         {
-            name: 'Time to select a color',
+            name: 'My name is: color selection',
             description: 'In this step, you can pick your favorite color'
         },
         function ($scope) {
-            
+            console.dir($scope);
         }
     )
 ]);
 stateDemoControllers.controller('NumberSelectionStep', ['$scope', 
     StepController(
         {
-            name: 'The step for selecting numbers',
+            name: 'My name is: number selection',
             description: 'In this step you can pick your very own favorite number'
         },
         function ($scope) {
-            
+            console.dir($scope);
         }
     )
 ]);

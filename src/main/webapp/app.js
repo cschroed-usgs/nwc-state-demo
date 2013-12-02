@@ -7,22 +7,34 @@ var stateDemoApp = angular.module('stateDemoApp', [
 
 stateDemoApp.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/workflowA');
+//        $urlRouterProvider.otherwise('/workflowA.ColorSelection');
 
-        $stateProvider.state('workflowA', {
-                    url: '/workflowA',
-                    templateUrl: 'partials/workflowDescription.html',
-                    controller: 'WorkflowA'
+        $stateProvider
+                .state('workflow', {
+                    url: '/workflow',
+                    templateUrl: 'partials/AllWorkflowShell.html',
+                    abstract: true
                 })
-                .state('workflowA.ColorSelection', {
+                .state('workflow.workflowA', {
+                    url: '/workflowA',
+                    templateUrl: 'partials/workflowA/OneWorkflowShell.html',
+                    controller: 'WorkflowA',
+                    abstract: true
+                })
+                .state('workflow.workflowA.ColorSelection', {
                     url: '/step1',
                     templateUrl: 'partials/workflowA/Step1.html',
                     controller: 'ColorSelectionStep'
                 })
-                .state('workflowA.NumberSelection', {
+                .state('workflow.workflowA.NumberSelection', {
                     url: '/step2',
                     templateUrl: 'partials/workflowA/Step2.html',
                     controller: 'NumberSelectionStep'
+                })
+                .state('workflow.workflowA.Final', {
+                    url: '/final',
+                    templateUrl: 'partials/workflowA/FinalA.html',
+                    controller: 'FinalSelectionStep'
                 });
     }
 ]);
