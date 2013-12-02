@@ -1,61 +1,70 @@
 /*global angular*/
-var stateDemoControllers = angular.module('stateDemoApp.controllers', []);
+(function(){
+    var stateDemoControllers = angular.module('stateDemoApp.controllers', []);
+    /**
+     * @param config
+     *      @param config.name Human-facing workflow name
+     *      @param config.description Human-facing workflow description
+     *      @param {Function} customControllerFunction custom behavior
+     * @returns controller function to be used in a call to <module>.controller()
+     */
+    var WorkflowController = function(config, customControllerFunction){
+        return function($scope){
+            $scope.name = config.name;
+            $scope.description = config.description;
+
+            customControllerFunction.apply(arguments);
+        };
+    };
 
 stateDemoControllers.controller('WorkflowA', ['$scope', 
     function ($scope) {
         $scope.name = "The \"A\" Workflow!";
         $scope.description = "A wonderful workflow in which we make selections and demostrate the ability to store and restore state.";
-        var stepNumber = stepNumber || 0;
-        var steps = ['ColorSelection', 'NumberSelection'];
-        var nextStepNumber, nextStep;
-        var previousStepNumber, previousStep;
-        
-        var updateStepVars = function(){
-            if(stepNumber+1 < steps.length){
-                nextStepNumber = stepNumber + 1;
-                nextStep = steps[nextStepNumber];
-            }
-            else{
-                nextStepNumber = -1;
-                nextStep = '';
-            }
-            if(stepNumber>0){
-                previousStepNumber = stepNumber - 1;
-                previousStep = steps[previousStepNumber];
-            }
-            else{
-                previousStepNumber = -1;
-                previousStep = '';
-            }
-        };
-        //initialize on controller instantiation
-        updateStepVars();
-        $scope.goToNextStep = function(){
-            stepNumber++;
-            updateStepVars();
-        };
-        $scope.goToPreviousStep = function(){
-            stepNumber--;
-            updateStepVars();
-        };
-        
-        $scope.stepNumber = stepNumber;
-        $scope.steps = steps;
-        $scope.nextStepNumber = nextStepNumber;
-        $scope.nextStep = nextStep;
-        $scope.previousStepNumber = previousStepNumber;
-        $scope.previousStep = previousStep;
-        
-        
+
     }
 ]);
+
+/**
+ * 
+ * @param config
+ *  @param config.name the human-facing step name
+ *  @param config.description the human-facing description
+ * @param {Function} customControllerFunction
+ * @returns controller function for use in a call to <module>.controller()
+ */
+
+var StepController = function(config, customControllerFunction){
+  return function($scope){
+      $scope.name = config.name;
+      $scope.description = config.description;
+      customControllerFunction.apply(arguments);
+  };
+};
+
+
+
 stateDemoControllers.controller('ColorSelectionStep', ['$scope', 
-    function ($scope) {
-        $scope.name = "The color step!";
-    }
+    StepController(
+        {
+            name: 'Time to select a color',
+            description: 'In this step, you can pick your favorite color'
+        },
+        function ($scope) {
+            
+        }
+    )
 ]);
 stateDemoControllers.controller('NumberSelectionStep', ['$scope', 
-    function ($scope) {
-        $scope.name = "The Number step!";
-    }
+    StepController(
+        {
+            name: 'The step for selecting numbers',
+            description: 'In this step you can pick your very own favorite number'
+        },
+        function ($scope) {
+            
+        }
+    )
 ]);
+
+}());

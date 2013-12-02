@@ -5,6 +5,5 @@
 <div ng-bind="currentStepTitle"></div>
 <div ui-view></div>
 <nav>
-    <a ui-sref="workflowA.{{previousStep}}" ng-click="goToPreviousStep">Previous</a>
-    <a ui-sref="workflowA.{{nextStep}}" ng-click="goToNextStep">Next</a>
+    <a ui-sref="^.ColorSelection">Next</a>
 </nav>
