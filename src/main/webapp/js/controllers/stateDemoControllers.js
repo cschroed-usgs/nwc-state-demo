@@ -56,7 +56,7 @@ stateDemoControllers.controller('ColorSelectionStep', ['$scope', 'SharedState',
             name: 'My name is: color selection',
             description: 'In this step, you can pick your favorite color'
         },
-        function ($scope) {
+        function ($scope, SharedState) {
             console.dir($scope);
         }
     )
@@ -67,7 +67,7 @@ stateDemoControllers.controller('NumberSelectionStep', ['$scope', 'SharedState',
             name: 'My name is: number selection',
             description: 'In this step you can pick your very own favorite number'
         },
-        function ($scope) {
+        function ($scope, SharedState) {
             console.dir($scope);
         }
     )
@@ -78,7 +78,7 @@ stateDemoControllers.controller('FinalStep', ['$scope', 'SharedState',
             name: 'Final Step',
             description: "You're all done!"
         },
-        function ($scope) {
+        function ($scope, SharedState) {
             console.dir($scope);
         }
     )
