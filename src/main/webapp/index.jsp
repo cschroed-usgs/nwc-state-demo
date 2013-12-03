@@ -11,8 +11,6 @@
         
         <script type="text/javascript" src="webjars/angularjs/1.2.1/angular.js"></script>
         <script type="text/javascript" src="webjars/angular-ui-router/0.2.0/angular-ui-router.js"></script>
-        <script type="text/javascript" src="webjars/jquery/2.0.3/jquery.js"></script>
-        <script type="text/javascript" src="webjars/bootstrap/3.0.2/js/bootstrap.js"></script>
         <script type="text/javascript" src="webjars/angular-ui-bootstrap/0.6.0/ui-bootstrap.js"></script>
         <script type="text/javascript" src="webjars/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.js"></script>
         <script type="text/javascript" src="webjars/sugar/1.3.8/sugar-full.development.js"></script>
