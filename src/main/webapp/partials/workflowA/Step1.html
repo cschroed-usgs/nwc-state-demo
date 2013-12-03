@@ -1,4 +1,8 @@
 <h4 ng-bind="name"></h4>
+<p>Choose your favorite color:</p>
+<select ng-model="state.favoriteColor" ng-options="c.name for c in colors">
+    <option value="">-- choose color --</option>
+</select>
 <nav>
     <a ui-sref="^.NumberSelection">Next</a>
 </nav>

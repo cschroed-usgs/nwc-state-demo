@@ -41,10 +41,11 @@ var StepController = function(config, customControllerFunction){
     if(!config || !config.name || !config.description){
         throw new Error("Mandatory Step variables not Defined.");
     }
-    return function($scope){
+    return function($scope, SharedState){
       $scope.name = config.name;
       $scope.description = config.description;
-      customControllerFunction.apply(arguments);
+      $scope.state = SharedState;
+      customControllerFunction.apply({}, arguments);
   };
 };
 
@@ -57,7 +58,11 @@ stateDemoControllers.controller('ColorSelectionStep', ['$scope', 'SharedState',
             description: 'In this step, you can pick your favorite color'
         },
         function ($scope, SharedState) {
-            console.dir($scope);
+            $scope.colors = [
+                {name: 'Yellow', value: 0},
+                {name: 'Blue', value: 1}
+            ];
+            console.dir(SharedState);
         }
     )
 ]);
@@ -68,7 +73,9 @@ stateDemoControllers.controller('NumberSelectionStep', ['$scope', 'SharedState',
             description: 'In this step you can pick your very own favorite number'
         },
         function ($scope, SharedState) {
-            console.dir($scope);
+            
+            console.dir(SharedState);
+            
         }
     )
 ]);
@@ -79,7 +86,7 @@ stateDemoControllers.controller('FinalStep', ['$scope', 'SharedState',
             description: "You're all done!"
         },
         function ($scope, SharedState) {
-            console.dir($scope);
+            console.dir(SharedState);
         }
     )
 ]);

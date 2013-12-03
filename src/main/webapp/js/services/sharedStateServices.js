@@ -1,13 +1,14 @@
 /*global angular*/
+(function(){
 var sharedStateServices = angular.module('stateDemoApp.sharedStateServices', []);
 
-sharedStateServices.factory('SharedState', [
+var sharedStateObject = {
+    version: 0.1
+};
+        
+sharedStateServices.factory('SharedState', 
     function(){
-        return function(){
-            return {
-                color: 'blue',
-                number: 42
-            };
-        };
+        return sharedStateObject;
     }
-]);
+);
+}());
