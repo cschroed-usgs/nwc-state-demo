@@ -4,11 +4,10 @@
 <html ng-app="stateDemoApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title></title>
         
-        <link type="text/css" src="webjars/bootstrap/3.0.2/css/bootstrap.css"/>
-        <link type="text/css" src="webjars/bootstrap/3.0.2/css/bootstrap-theme.css"/>
-        
+        <link type="text/css" rel="stylesheet" href="webjars/bootstrap/2.3.2/css/bootstrap.css"/>
         <script type="text/javascript" src="webjars/angularjs/1.2.1/angular.js"></script>
         <script type="text/javascript" src="webjars/angular-ui-router/0.2.0/angular-ui-router.js"></script>
         <script type="text/javascript" src="webjars/angular-ui-bootstrap/0.6.0/ui-bootstrap.js"></script>
