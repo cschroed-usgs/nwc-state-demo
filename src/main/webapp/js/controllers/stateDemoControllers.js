@@ -58,10 +58,22 @@ stateDemoControllers.controller('ColorSelectionStep', ['$scope', 'SharedState',
             description: 'In this step, you can pick your favorite color'
         },
         function ($scope, SharedState) {
+            $scope.form = {};
+            $scope.$watch('form.favoriteColor', function(newValue, oldValue){
+               if( (newValue !== oldValue) && (SharedState.favoriteColor !== newValue) ){
+                   $scope.state.favoriteColor = newValue;
+               } 
+            });
+            $scope.$watch('state.favoriteColor', function(newValue, oldValue){
+                if($scope.form.favoriteColor !== newValue ){    
+                    $scope.form.favoriteColor = newValue;
+                }
+            });
             $scope.colors = [
-                {name: 'Yellow', value: 0},
-                {name: 'Blue', value: 1}
+                'yellow',
+                'blue'
             ];
+            
             console.dir(SharedState);
         }
     )
@@ -79,13 +91,15 @@ stateDemoControllers.controller('NumberSelectionStep', ['$scope', 'SharedState',
         }
     )
 ]);
-stateDemoControllers.controller('FinalStep', ['$scope', 'SharedState',
+stateDemoControllers.controller('FinalStep', ['$scope', 'SharedState', '$state',
     StepController(
         {
             name: 'Final Step',
             description: "You're all done!"
         },
-        function ($scope, SharedState) {
+        function ($scope, SharedState, $state) {
+            SharedState._clientState.name = $state.current.name;
+            SharedState._clientState.params = $state.params;
             console.dir(SharedState);
         }
     )
