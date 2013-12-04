@@ -7,7 +7,7 @@ var stateDemoApp = angular.module('stateDemoApp', [
 
 stateDemoApp.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
-//        $urlRouterProvider.otherwise('/workflowA.ColorSelection');
+        $urlRouterProvider.otherwise('/workflow/workflowA/step1');
 
         $stateProvider
                 .state('workflow', {
@@ -38,13 +38,3 @@ stateDemoApp.config(['$stateProvider', '$urlRouterProvider',
                 });
     }
 ]);
-//stateDemoApp.run(['$rootScope', function ($rootScope) {
-//        var eventNames = ['$stateChangeStart', '$stateNotFound', '$stateChangeSuccess', '$stateChangeError', '$viewContentLoading', '$viewContentLoaded'];
-//        var registerNamedHandler = function (name) {
-//            $rootScope.on(name, function () {
-//                alert(name);
-//            });
-//        };
-//        angular.forEach(eventNames, registerNamedHandler);
-//    }
-//]);
