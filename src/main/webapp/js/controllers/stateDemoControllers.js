@@ -105,5 +105,24 @@ stateDemoControllers.controller('FinalStep', ['$scope', 'SharedState', '$state',
     )
 ]);
 
-
+stateDemoControllers.controller('Restore', [
+            '$scope',  'SharedState',  '$state',   '$timeout', '$http',    '$modal',
+    function($scope,    SharedState,    $state,     $timeout,   $http,      $modal){
+        $scope.stateId = $state.params.stateId;
+        var retrieveState = function(){
+            $http.get($scope.stateId + '.json')
+                    .success(function(data){
+                        SharedState = angular.fromJson(data);
+                        $state.go(SharedState._clientState.name, SharedState._clientState.params);
+                    })
+                    .error(function(){
+                        $modal.open({
+                            template: 'Error Retrieving State'
+                        });
+                    });
+        };
+        $timeout(retrieveState, 1000);
+        
+    }
+]);
 }());

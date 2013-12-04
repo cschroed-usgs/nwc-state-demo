@@ -2,7 +2,8 @@
 var stateDemoApp = angular.module('stateDemoApp', [
     'stateDemoApp.controllers',
     'stateDemoApp.sharedStateServices',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap'
 ]);
 
 stateDemoApp.config(['$stateProvider', '$urlRouterProvider',
@@ -10,6 +11,11 @@ stateDemoApp.config(['$stateProvider', '$urlRouterProvider',
         $urlRouterProvider.otherwise('/workflow/workflowA/step1');
 
         $stateProvider
+                .state('restore', {
+                    url: '/state/restore/:stateId',
+                    templateUrl: 'partials/Restoring.html',
+                    controller: 'Restore'
+                })
                 .state('workflow', {
                     url: '/workflow',
                     templateUrl: 'partials/AllWorkflowShell.html',
