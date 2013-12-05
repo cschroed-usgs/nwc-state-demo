@@ -112,7 +112,7 @@ stateDemoControllers.controller('Restore', [
         var retrieveState = function(){
             $http.get($scope.stateId + '.json')
                     .success(function(data){
-                        SharedState = angular.fromJson(data);
+                        Object.merge(SharedState, data);
                         $state.go(SharedState._clientState.name, SharedState._clientState.params);
                     })
                     .error(function(){
@@ -121,7 +121,7 @@ stateDemoControllers.controller('Restore', [
                         });
                     });
         };
-        $timeout(retrieveState, 1000);
+        $timeout(retrieveState, 3000);
         
     }
 ]);
