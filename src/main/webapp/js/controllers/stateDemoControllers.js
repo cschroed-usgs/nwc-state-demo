@@ -12,7 +12,7 @@
         if(!config || !config.name || !config.description){
             throw new Error("Mandatory Step variables not Defined.");
         }
-        return function($scope){
+        return function($scope, sharedState){
             $scope.name = config.name;
             $scope.description = config.description;
 
@@ -41,26 +41,26 @@ var StepController = function(config, customControllerFunction){
     if(!config || !config.name || !config.description){
         throw new Error("Mandatory Step variables not Defined.");
     }
-    return function($scope, SharedState){
+    return function($scope, StoredState){
       $scope.name = config.name;
       $scope.description = config.description;
-      $scope.state = SharedState;
+      $scope.state = StoredState;
       customControllerFunction.apply({}, arguments);
   };
 };
 
 
 
-stateDemoControllers.controller('ColorSelectionStep', ['$scope', 'SharedState',
+stateDemoControllers.controller('ColorSelectionStep', ['$scope', 'StoredState', 'CommonState',
     StepController(
         {
             name: 'My name is: color selection',
             description: 'In this step, you can pick your favorite color'
         },
-        function ($scope, SharedState) {
+        function ($scope, StoredState) {
             $scope.form = {};
             $scope.$watch('form.favoriteColor', function(newValue, oldValue){
-               if( (newValue !== oldValue) && (SharedState.favoriteColor !== newValue) ){
+               if( (newValue !== oldValue) && (StoredState.favoriteColor !== newValue) ){
                    $scope.state.favoriteColor = newValue;
                } 
             });
@@ -74,46 +74,46 @@ stateDemoControllers.controller('ColorSelectionStep', ['$scope', 'SharedState',
                 'blue'
             ];
             
-            console.dir(SharedState);
+            console.dir(StoredState);
         }
     )
 ]);
-stateDemoControllers.controller('NumberSelectionStep', ['$scope', 'SharedState',
+stateDemoControllers.controller('NumberSelectionStep', ['$scope', 'StoredState', 'CommonState',
     StepController(
         {
             name: 'My name is: number selection',
             description: 'In this step you can pick your very own favorite number'
         },
-        function ($scope, SharedState) {
-            
-            console.dir(SharedState);
+        function ($scope, StoredState, CommonState) {
+            $scope.CommonState = CommonState;
+            console.dir(StoredState);
             
         }
     )
 ]);
-stateDemoControllers.controller('FinalStep', ['$scope', 'SharedState', '$state',
+stateDemoControllers.controller('FinalStep', ['$scope', 'StoredState', '$state',
     StepController(
         {
             name: 'Final Step',
             description: "You're all done!"
         },
-        function ($scope, SharedState, $state) {
-            SharedState._clientState.name = $state.current.name;
-            SharedState._clientState.params = $state.params;
-            console.dir(SharedState);
+        function ($scope, StoredState, $state) {
+            StoredState._clientState.name = $state.current.name;
+            StoredState._clientState.params = $state.params;
+            console.dir(StoredState);
         }
     )
 ]);
 
 stateDemoControllers.controller('Restore', [
-            '$scope',  'SharedState',  '$state',   '$timeout', '$http',    '$modal',
-    function($scope,    SharedState,    $state,     $timeout,   $http,      $modal){
+            '$scope',  'StoredState',  '$state',   '$timeout', '$http',    '$modal',
+    function($scope,    StoredState,    $state,     $timeout,   $http,      $modal){
         $scope.stateId = $state.params.stateId;
         var retrieveState = function(){
             $http.get($scope.stateId + '.json')
                     .success(function(data){
-                        Object.merge(SharedState, data);
-                        $state.go(SharedState._clientState.name, SharedState._clientState.params);
+                        Object.merge(StoredState, data);
+                        $state.go(StoredState._clientState.name, StoredState._clientState.params);
                     })
                     .error(function(){
                         $modal.open({
